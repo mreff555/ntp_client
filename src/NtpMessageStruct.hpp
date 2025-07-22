@@ -7,6 +7,7 @@
 
 // Difference between a UNIX timestamp (Starting Jan, 1st 1970) and a NTP
 // timestamp (Starting Jan, 1st 1900
+// (70 years * 365 days + 17 leap years) * 86400 seconds per day
 #define NTP_TIMESTAMP_DELTA 2208988800ull
 
 // NTP packet structure (Big endian)

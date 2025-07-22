@@ -50,6 +50,27 @@ std::string NtpClient::getTxTimeInSeconds(NtpMessageStruct &packet) const
   return ss.str();
 }
 
+uint8_t NtpClient::getLi(NtpMessageStruct &packet) const
+{
+  uint8_t li (ntohl(packet.li_vn_mode) & 0x3);
+  return li;
+}
+
+uint8_t NtpClient::getStratum(NtpMessageStruct &packet) const
+{
+  return packet.stratum;
+}
+
+uint8_t NtpClient::getPoll(NtpMessageStruct &packet) const
+{
+  return packet.poll;
+}
+
+uint8_t NtpClient::getPrecision(NtpMessageStruct &packet) const
+{
+  return packet.precision;
+}
+
 // Create and send an NTP request to the specified server
 int NtpClient::ntp_request(const char *server, NtpMessageStruct *packet)
 {

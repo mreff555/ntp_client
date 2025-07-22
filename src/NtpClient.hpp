@@ -15,6 +15,15 @@ public:
 
   std::string getTxTimeInSeconds(NtpMessageStruct &packet) const;
 
+  uint8_t getLi(NtpMessageStruct &packet) const;
+
+  uint8_t getStratum(NtpMessageStruct &packet) const;
+
+  uint8_t getPoll(NtpMessageStruct &packet) const;
+
+  uint8_t getPrecision(NtpMessageStruct &packet) const;
+
+
   int ntp_request(const char *server, NtpMessageStruct *packet);
 
 private:

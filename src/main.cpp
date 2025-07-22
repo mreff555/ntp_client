@@ -4,7 +4,8 @@
 
 int main()
 {
-  const char *server = "pool.ntp.org";
+  const char *server = "pool.ntp.org";            // Use this
+  //const char *server = "192.168.100.1";         // Starlink best effort for debugging
   NtpMessageStruct packet;
   NtpClient client;
 
@@ -26,6 +27,15 @@ int main()
   // printf("Precision: %u\n", 0x000F & ntohl(packet.precision));
 
   printf("Reference ID: 0x%X\n", ntohl(packet.ref_id));
+
+  printf("Leap Indicator: %d\n", client.getLi(packet));
+
+  printf("Stratum: %d\n", client.getStratum(packet));
+
+  printf("Poll: %d\n", client.getPoll(packet));
+
+  printf("Precision: %d\n", client.getPrecision(packet));
+
 
   printf("Reference time in seconds: %s\n",
          client.getReferenceTimeInSeconds(packet).c_str());
